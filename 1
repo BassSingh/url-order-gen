@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID URL Generator</title>
+
+  <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #generatedUrl {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+  <h2>ID URL Generator</h2>
+  <label for="orderId">Enter ID:</label>
+  <input type="text" id="orderId" placeholder="Enter ID">
+  <button onclick="generateUrl()">Generate URL</button>
+  <p id="generatedUrl"></p>
+</div>
+
+<script>
+        function generateUrl() {
+            // Get input value
+            var orderId = document.getElementById("orderId").value;
+
+            // Check if the input is in the correct format
+            var idPattern = /^(\d+)-(\d+)$/;
+            if (!idPattern.test(orderId)) {
+                alert("Invalid ID format. Please enter in the format: 12345-00001");
+                return;
+            }
+
+            // Split the order ID into parts
+            var idParts = orderId.split('-');
+
+            // Generate the URL
+            var url = "www.myidblabla.com/order-love/" + idParts[0] + "/" + idParts[1];
+
+            // Display the generated URL as a clickable link
+            var generatedUrlElement = document.getElementById("generatedUrl");
+            generatedUrlElement.innerHTML = "Generated URL: <a href='http://" + url + "' target='_blank'>" + url + "</a>";
+        }
+    </script>
+</body>
+</html>
